@@ -1,0 +1,43 @@
+Word Predictor App
+========================================================
+author: Fitz Gerald M. Villegas
+date: November 30, 2020
+autosize: true
+
+Introduction
+========================================================
+<small>
+This presentation features the Word Predictor Web Application including an overview to the application user interface, methods of getting and clean the data, and details about the Word Predict Model.
+
+The goal of the project is to build a predictive text model combined with a shiny app UI that will predict the next word as the user types a sentence similar to the way most smart phone keyboards are implemented today using the technology of Swiftkey.
+</small>
+
+Getting & Cleaning the Data
+========================================================
+
+<small>
+The text used to build the predictive text model came from corpus of blogs, news and twitter data sponsored by Swiftkey. Data are first processed and cleaned as steps below:
+
+1. A subset of the original data was sampled from the three sources in en_US (blogs,twitter and news) which is then merged into one.
+2. Data cleaning is done by conversion to lowercase, strip white space, removing profanities, and removing punctuation and numbers.
+3. The n-grams are then created. For this data, it is limited to Quadgrams, Trigrams and Bigrams.
+4. The term-count tables are extracted from the N-Grams and sorted according to the frequency in descending order.
+5. Lastly, the n-gram data table are saved as .RData files.
+</small>
+
+The Word Prediction Model
+========================================================
+<small>
+The prediction model for next word is based on the Katz Back-off algorithm. As text is entered by the user, the algorithm iterates from longest n-gram (Quadgram) to shortest (Bigram) to detect a match. The predicted next word is considered using the longest, most frequent matching n-gram. The flow of the algorithm is in the About tab of the Word Predictor App.
+</small>
+
+Application User Interface
+========================================================
+<small>
+The Word Predictor Home page will be shown once you opened the Web app. When entering words in the text box provided, please allow a few seconds for the predicted word to appear.There will be a note identifying which n-gram model was used. There is a About tab containing a bried information of the Web App.
+</small>
+
+========================================================
+```{r, echo=FALSE}
+   knitr::include_graphics('./gui.png')
+```
